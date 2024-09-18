@@ -1,2 +1,2 @@
 # Python - codeptit
-    - print("Hello guys");
+    print("Hello guys");
