@@ -1,22 +1,29 @@
-import math
+#6.1
+infor = {
+    'first_name' : 'Tran',
+    'last_name'  : 'Thien',
+    'age'        : '20',
+    'city'       : 'Ha Noi'
+}
 
-prime = [True] * 8000
-p = []
+for x in infor:
+    print(x, infor[x], sep = ' : ')
 
-m = [3, 5, 5]
+#6.2
+favorite_numbers = {
+    'Thien'  : '0988775732',
+    'Tran'   : '0112233445',
+    'Nguyen' : '0888943332',
+    'Nam'    : '0998888822',
+    'Tu'     : '0999933223'
+}
 
-def sieve():
-    prime[0] = prime[1] = False
-    for i in range(2, math.isqrt(8000) + 1):
-        if prime[i]:
-            for j in range(i * i, 8000, i):
-                prime[j] = False
+for x in infor:
+    print(x, favorite_numbers[x], sep = ' : ')
 
-    p.append(2)
-    for i in range(3, 8000):
-        if prime[i]:
-            p.append(i)
-
-if __name__ == '__main__':
-    for i in range(0, 10):
-        print(m[i])
+#6.3
+dictionary = {
+    'Variable' : 'Bien',
+    'function' : 'Ham',
+    
+}
