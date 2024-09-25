@@ -1,11 +1,10 @@
-#6.2
-favorite_numbers = {
-    'Thien'  : '0988775732',
-    'Tran'   : '0112233445',
-    'Nguyen' : '0888943332',
-    'Nam'    : '0998888822',
-    'Tu'     : '0999933223'
-}
+res = [[x * y for x in range(1, 4)] for y in range(1, 3)]
+#tương đương
+# for y in range(1, 3):
+#     tmp = []
+#     for x in range(1, 4):
+#         tmp.append(x * y)
+#     res.append(tmp)
+# [[1, 2, 3], [2, 4, 6]]
 
-for x in favorite_numbers:
-    print(x, favorite_numbers[x], sep = ' : ')
+print(res)
