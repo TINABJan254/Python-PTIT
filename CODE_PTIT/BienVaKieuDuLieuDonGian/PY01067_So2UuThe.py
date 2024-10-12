@@ -22,6 +22,7 @@ def cmp(x, y):
     if x < y:
         return -1
     return 1    
+
 if __name__ == '__main__':
     Try('')
     f.sort(key = cmp_to_key(cmp))
