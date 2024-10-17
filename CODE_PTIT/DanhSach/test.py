@@ -36,7 +36,4 @@ def merge_sort(a, L, R):
     return 0   
 
 if __name__ == "__main__":
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    print(merge_sort(a, 0, n - 1))
+    print('hello hello world')
