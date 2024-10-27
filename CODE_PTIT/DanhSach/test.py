@@ -1,39 +1,38 @@
-def merge(a, L, mid, R):
-    v1 = a[L:mid + 1]
-    v2 = a[mid + 1:R + 1]
+from sys import stdin
+def first(x, a):
+    l, r = 0, len(a)
+    if r < 12:
+        for i in reversed(range(r)):
+            if a[i][0] < x: return i + 1
+        return 0
+    else:
+        while l < r:
+            mid = (l + r) // 2
+            if a[mid][0] < x: l = mid + 1
+            else: r = mid
+        return l
 
-    i, j = 0, 0
-    cnt = 0
-    while i < len(v1) and j < len(v2):
-        if v1[i] <= v2[j]:
-            a[L] = v1[i]
-            i += 1
+def second(N, x, a):
+    return N and a[N-1][1] < x
+
+def main():
+    _all = map(int, stdin.read().split())
+    stdin.close()
+    LEN = []
+    for _ in range(next(_all)):
+        l, r, x = 0, len(LEN), (next(_all), next(_all))
+        while l < r:
+            mid = (l + r) // 2
+            a = LEN[mid]
+            if a and second(first(x[0], a), x[1], a): l = mid + 1
+            else: r = mid
+        if l == len(LEN): LEN.append([x])
         else:
-            a[L] = v2[j]
-            j += 1
-            cnt += len(v1) - i  # Count inversions
-        L += 1
-
-    while i < len(v1):
-        a[L] = v1[i]
-        i += 1
-        L += 1
-    while j < len(v2):
-        a[L] = v2[j]
-        j += 1
-        L += 1
-
-    return cnt
-
-def merge_sort(a, L, R):
-    if L < R:
-        mid = (L + R) // 2
-        res = 0
-        res += merge_sort(a, L, mid)
-        res += merge_sort(a, mid + 1, R)
-        res += merge(a, L, mid, R)
-        return res
-    return 0   
-
-if __name__ == "__main__":
-    print('hello hello world')
+            LL = LEN[l]
+            LLL = len(LL)
+            st = ed = first(x[0], LL)
+            while ed < LLL and x[1] <= LL[ed][1]: ed +=1
+            del LL[st:ed]
+            LL.insert(st, x)
+    print(len(LEN))
+main()
