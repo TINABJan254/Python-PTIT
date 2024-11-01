@@ -1,38 +1,20 @@
-from sys import stdin
-def first(x, a):
-    l, r = 0, len(a)
-    if r < 12:
-        for i in reversed(range(r)):
-            if a[i][0] < x: return i + 1
-        return 0
-    else:
-        while l < r:
-            mid = (l + r) // 2
-            if a[mid][0] < x: l = mid + 1
-            else: r = mid
-        return l
+p = [True] * 10000005;
 
-def second(N, x, a):
-    return N and a[N-1][1] < x
+def sieve():
+    p[0] = p[1] = False
+    for i in range(2, 1000):
+        if p[i]:
+            for j in range(i * i, 10000005, i):
+                p[j] = False
 
-def main():
-    _all = map(int, stdin.read().split())
-    stdin.close()
-    LEN = []
-    for _ in range(next(_all)):
-        l, r, x = 0, len(LEN), (next(_all), next(_all))
-        while l < r:
-            mid = (l + r) // 2
-            a = LEN[mid]
-            if a and second(first(x[0], a), x[1], a): l = mid + 1
-            else: r = mid
-        if l == len(LEN): LEN.append([x])
-        else:
-            LL = LEN[l]
-            LLL = len(LL)
-            st = ed = first(x[0], LL)
-            while ed < LLL and x[1] <= LL[ed][1]: ed +=1
-            del LL[st:ed]
-            LL.insert(st, x)
-    print(len(LEN))
-main()
+def check(n):
+    if not p[n] or not p[int(str(n)[::-1])]: return False
+    if not p[sum(list(map(int, str(n))))]: return False
+    for x in list(map(int, str(n))):
+        if not p[x]: return False
+    return True
+
+if __name__ == '__main__':
+    sieve()
+    for _ in range(0, int(input())):
+        n = int(input())
