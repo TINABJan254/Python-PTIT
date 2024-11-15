@@ -1,4 +1,5 @@
 import math
+import sys
 
 def isPrime(n):
     for i in range(2, math.isqrt(n) + 1):
@@ -16,16 +17,14 @@ if __name__ == '__main__':
             b.append(x)
             d[x] = 1
     m = len(b)
-    f = [0] * (m + 1)
-    f[1] = b[0]
+    f = [0] * m
+    f[0] = b[0]
     for i in range(1, m):
-        f[i + 1] = f[i] + b[i]
+        f[i] = f[i - 1] + b[i]
     
-    print(b)
-    print(f)
+    for i in range(0, m):
+        if isPrime(f[i]) and isPrime(f[m - 1] - f[i]):
+            print(i)
+            sys.exit()
     
-
-
-
-
-
+    print('NOT FOUND')
