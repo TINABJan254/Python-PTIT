@@ -1,7 +1,8 @@
-with open('Learning/file/input.txt', 'r') as file_object:
-    contents = file_object.read()
+import json
 
-print(contents)
+with open('Learning/file/input.json', 'r') as f:
+    data = json.load(f)
 
+print(data)
 
 
